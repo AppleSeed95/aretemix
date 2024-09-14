@@ -1,4 +1,4 @@
-#  Don't  format  binding  crates  as  they  are  generated  code
-ignore  =  [
-        "bindings",
+# Don't format binding crates as they are generated code
+ignore = [
+    "bindings",
 ]

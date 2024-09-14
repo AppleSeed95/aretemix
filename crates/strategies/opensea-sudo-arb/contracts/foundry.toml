@@ -4,8 +4,8 @@ out = 'out'
 libs = ['lib']
 
 remappings = [
-    'forge-std/=lib/forge-std/src/',
-    'solmate/=lib/solmate/src/',
+  'forge-std/=lib/forge-std/src/',
+  'solmate/=lib/solmate/src/',
 ]
 
 [fuzz]
