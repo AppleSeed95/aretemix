@@ -1,25 +1,25 @@
-// SPDX-License-Identifier: AGPL-3.0-only
-pragma solidity >=0.8.0;
+//  SPDX-License-Identifier:  AGPL-3.0-only
+pragma  solidity  >=0.8.0;
 
-import {Bytes32AddressLib} from "./Bytes32AddressLib.sol";
+import  {Bytes32AddressLib}  from  "./Bytes32AddressLib.sol";
 
-/// @notice Deploy to deterministic addresses without an initcode factor.
-/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/CREATE3.sol)
-/// @author Modified from 0xSequence (https://github.com/0xSequence/create3/blob/master/contracts/Create3.sol)
-library CREATE3 {
-    using Bytes32AddressLib for bytes32;
+///  @notice  Deploy  to  deterministic  addresses  without  an  initcode  factor.
+///  @author  Solmate  (https://github.com/transmissions11/solmate/blob/main/src/utils/CREATE3.sol)
+///  @author  Modified  from  0xSequence  (https://github.com/0xSequence/create3/blob/master/contracts/Create3.sol)
+library  CREATE3  {
+        using  Bytes32AddressLib  for  bytes32;
 
-    //--------------------------------------------------------------------------------//
-    // Opcode     | Opcode + Arguments    | Description      | Stack View             //
-    //--------------------------------------------------------------------------------//
-    // 0x36       |  0x36                 | CALLDATASIZE     | size                   //
-    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 size                 //
-    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 0 size               //
-    // 0x37       |  0x37                 | CALLDATACOPY     |                        //
-    // 0x36       |  0x36                 | CALLDATASIZE     | size                   //
-    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 size                 //
-    // 0x34       |  0x34                 | CALLVALUE        | value 0 size           //
-    // 0xf0       |  0xf0                 | CREATE           | newContract            //
+        //--------------------------------------------------------------------------------//
+        //  Opcode          |  Opcode  +  Arguments        |  Description            |  Stack  View                          //
+        //--------------------------------------------------------------------------------//
+        //  0x36              |    0x36                                  |  CALLDATASIZE          |  size                                      //
+        //  0x3d              |    0x3d                                  |  RETURNDATASIZE      |  0  size                                  //
+        //  0x3d              |    0x3d                                  |  RETURNDATASIZE      |  0  0  size                              //
+        //  0x37              |    0x37                                  |  CALLDATACOPY          |                                                //
+        //  0x36              |    0x36                                  |  CALLDATASIZE          |  size                                      //
+        //  0x3d              |    0x3d                                  |  RETURNDATASIZE      |  0  size                                  //
+        //  0x34              |    0x34                                  |  CALLVALUE                |  value  0  size                      //
+        //  0xf0              |    0xf0                   | CREATE           | newContract            //
     //--------------------------------------------------------------------------------//
     // Opcode     | Opcode + Arguments    | Description      | Stack View             //
     //--------------------------------------------------------------------------------//
