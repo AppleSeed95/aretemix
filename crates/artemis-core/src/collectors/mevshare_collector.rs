@@ -19,14 +19,4 @@ impl MevShareCollector {
 /// Implementation of the [Collector](Collector) trait for the
 /// [MevShareCollector](MevShareCollector).
 #[async_trait]
-impl Collector<Event> for MevShareCollector {
-    async fn get_event_stream(&self) -> Result<CollectorStream<'_, Event>> {
-        let client = EventClient::default();
-        let stream = client.events(&self.mevshare_sse_url).await.unwrap();
-        let stream = stream.filter_map(|event| match event {
-            Ok(evt) => Some(evt),
-            Err(_) => None,
-        });
-        Ok(Box::pin(stream))
-    }
-}
+\
