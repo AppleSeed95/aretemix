@@ -11,22 +11,22 @@ use tokio_stream::StreamExt;
 
 /// A collector that listens for new blocks, and generates a stream of
 /// [events](NewBlock) which contain the block number and hash.
-pub struct BlockCollector<M> {
-    provider: Arc<M>,
-}
+// pub struct BlockCollector<M> {
+//     provider: Arc<M>,
+// }
 
-/// A new block event, containing the block number and hash.
-#[derive(Debug, Clone)]
-pub struct NewBlock {
-    pub hash: H256,
-    pub number: U64,
-}
+// /// A new block event, containing the block number and hash.
+// #[derive(Debug, Clone)]
+// pub struct NewBlock {
+//     pub hash: H256,
+//     pub number: U64,
+// }
 
-impl<M> BlockCollector<M> {
-    pub fn new(provider: Arc<M>) -> Self {
-        Self { provider }
-    }
-}
+// impl<M> BlockCollector<M> {
+//     pub fn new(provider: Arc<M>) -> Self {
+//         Self { provider }
+//     }
+// }
 
 /// Implementation of the [Collector](Collector) trait for the [BlockCollector](BlockCollector).
 /// This implementation uses the [PubsubClient](PubsubClient) to subscribe to new blocks.
