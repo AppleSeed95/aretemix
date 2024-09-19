@@ -7,22 +7,7 @@ use crate::types::{Collector, Executor, Strategy};
 
 /// The main engine of Artemis. This struct is responsible for orchestrating the
 /// data flow between collectors, strategies, and executors.
-pub struct Engine<E, A> {
-    /// The set of collectors that the engine will use to collect events.
-    collectors: Vec<Box<dyn Collector<E>>>,
 
-    /// The set of strategies that the engine will use to process events.
-    strategies: Vec<Box<dyn Strategy<E, A>>>,
-
-    /// The set of executors that the engine will use to execute actions.
-    executors: Vec<Box<dyn Executor<A>>>,
-
-    /// The capacity of the event channel.
-    event_channel_capacity: usize,
-
-    /// The capacity of the action channel.
-    action_channel_capacity: usize,
-}
 
 impl<E, A> Engine<E, A> {
     pub fn new() -> Self {
