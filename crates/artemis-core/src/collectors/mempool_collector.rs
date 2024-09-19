@@ -22,4 +22,16 @@ impl<M> MempoolCollector<M> {
 /// Implementation of the [Collector](Collector) trait for the [MempoolCollector](MempoolCollector).
 /// This implementation uses the [PubsubClient](PubsubClient) to subscribe to new transactions.
 #[async_trait]
-
+impl<M> Collector<Transaction> for MempoolCollector<M>
+where
+    M: Middleware,
+    M::Provider: PubsubClient,
+    M::Error: 'static,
+{
+    async fn get_event_stream(&self) -> Result<CollectorStream<'_, Transaction>> {
+        let stream = self.provider.subscribe_pending_txs().await?;
+        let stream = stream.transactions_unordered(256);
+        let stream = stream.filter_map(|res| async move { res.ok() });
+        Ok(Box::pin(stream))
+    }
+}
