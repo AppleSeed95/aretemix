@@ -1,13 +1,13 @@
-// use crate::types::{Collector, CollectorStream};
-// use anyhow::Result;
-// use async_trait::async_trait;
-// use ethers::{
-//     prelude::Middleware,
-//     providers::PubsubClient,
-//     types::{H256, U64},
-// };
-// use std::sync::Arc;
-// use tokio_stream::StreamExt;
+use crate::types::{Collector, CollectorStream};
+use anyhow::Result;
+use async_trait::async_trait;
+use ethers::{
+    prelude::Middleware,
+    providers::PubsubClient,
+    types::{H256, U64},
+};
+use std::sync::Arc;
+use tokio_stream::StreamExt;
 
 /// A collector that listens for new blocks, and generates a stream of
 /// [events](NewBlock) which contain the block number and hash.
